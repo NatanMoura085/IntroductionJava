@@ -1,4 +1,7 @@
-package classes.heranca.tabuleiro;
+package classes.heranca.teste;
+
+import classes.heranca.tabuleiro.Heroi;
+import classes.heranca.tabuleiro.Monstro;
 
 public class Jogo {
     public static void main(String[] args) {

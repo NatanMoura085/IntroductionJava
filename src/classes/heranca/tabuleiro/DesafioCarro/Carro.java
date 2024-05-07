@@ -3,6 +3,7 @@ package classes.heranca.tabuleiro.DesafioCarro;
 public class Carro {
     final int VELOCIDA_MAXIMA ;
     int velocidade = 0;
+    private int delta=20;
     Carro(int VELOCIDA_MAXIMA ){
         this.VELOCIDA_MAXIMA = VELOCIDA_MAXIMA;
 
@@ -11,13 +12,13 @@ public class Carro {
 
 
 
-    boolean Acelera(){
-    if (velocidade + 20 >= VELOCIDA_MAXIMA){
+   public boolean Acelera(){
+    if (velocidade + getDelta() >= VELOCIDA_MAXIMA){
        this.velocidade =VELOCIDA_MAXIMA;
 
 
     }else{
-        this.velocidade+=20;
+        this.velocidade+=getDelta();
         return true;
 
     }
@@ -38,5 +39,13 @@ public class Carro {
         return "Carro{" +
                 "velocidade=" + velocidade +
                 '}';
+    }
+
+    public int getDelta() {
+        return delta;
+    }
+
+    public void setDelta(int delta) {
+        this.delta = delta;
     }
 }

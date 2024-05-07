@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class Jogador {
 
-    int vida =100;
-    int x = 20;
-    int y =20;
+     public  int vida =100;
+    public  int x = 20;
+    public int y =20;
 
 
-    boolean Atacar(Jogador oponente){
+    public   boolean Atacar(Jogador oponente){
       int deltaX = Math.abs(x - oponente.x);
       int deltaY = Math.abs(y - oponente.y);
       if (deltaX ==0 && deltaY ==1){

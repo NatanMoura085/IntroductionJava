@@ -1,4 +1,8 @@
-package classes.heranca.tabuleiro.DesafioCarro;
+package classes.heranca.teste;
+
+import classes.heranca.tabuleiro.DesafioCarro.Carro;
+import classes.heranca.tabuleiro.DesafioCarro.Civic;
+import classes.heranca.tabuleiro.DesafioCarro.Ferrari;
 
 public class CarroTest {
     public static void main(String[] args) {
@@ -20,8 +24,10 @@ public class CarroTest {
 
         ferrari.Acelera();
         ferrari.Acelera();
-        ferrari.Acelera();
-      ;
+        ferrari.ligarTurbo();
+        ferrari.ligarAr();
+
+
 
 
 

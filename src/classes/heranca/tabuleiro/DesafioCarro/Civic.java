@@ -2,10 +2,10 @@ package classes.heranca.tabuleiro.DesafioCarro;
 
 public class Civic extends Carro{
 
-Civic(){
+public  Civic(){
     super(200);
 }
-    boolean Acelera() {
+    public  boolean Acelera() {
        boolean acelera1 =  super.Acelera();
         boolean acelera2 =  super.Acelera();
         boolean acelera3 =  super.Acelera();
