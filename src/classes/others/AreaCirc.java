@@ -1,4 +1,4 @@
-package classes;
+package classes.others;
 
 public class AreaCirc {
     static double pi = 3.14;

@@ -1,4 +1,4 @@
-package classes;
+package classes.others;
 
 public class Produto {
     String nome;

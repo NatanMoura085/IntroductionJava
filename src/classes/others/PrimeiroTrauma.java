@@ -1,4 +1,4 @@
-package classes;
+package classes.others;
 
 public class PrimeiroTrauma {
     int a =3;
