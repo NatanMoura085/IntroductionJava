@@ -1,5 +1,7 @@
 package classes.br.com.coder3.modelo;
 
+import classes.br.com.coder3.excecao.ExplosaoException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,4 +43,99 @@ public class Campo {
         }
 
     }
+
+    void alternaMarcacao(){
+        if (!aberto){
+            marcado = !marcado;
+        }
+    }
+
+    boolean abrir(){
+        if (!aberto && !marcado){
+             aberto = true;
+
+            if (minado) {
+                throw new ExplosaoException();
+
+            }
+
+
+
+        if(vizinhacaSegura()){
+            campoList.forEach(v->v.abrir());
+        }
+            return true;
+
+
+       }else{
+            return false;
+        }
+    }
+
+    boolean vizinhacaSegura(){
+       return campoList.stream().noneMatch(v->v.minado);
+
+    }
+
+        void  minar(){
+         minado = true;
+       }
+     public boolean IsAberto(){
+        return  aberto;
+     }
+
+     public boolean IsFechado(){
+        return !IsAberto();
+     }
+
+     public boolean IsMinar(){
+        return minado;
+     }
+
+     public boolean IsMarcado(){
+        return marcado;
+     }
+
+     public int getLinha(){
+        return linha;
+     }
+     public int getColuna(){
+        return coluna;
+
+     }
+
+     public boolean objetivoAlcancado(){
+        boolean desvendando = !minado && aberto;
+        boolean protegido = minado && marcado;
+        return  protegido || desvendando;
+     }
+
+     void  reniciar(){
+        minado = false;
+        marcado = false;
+        aberto = false;
+     }
+
+       public  long minasVizinhaca(){
+         long contador = campoList.stream().filter(v->v.minado).count();
+
+            return contador;
+        }
+     public String toString(){
+        if (marcado){
+            return "x";
+        }else if(aberto && minado){
+            return "*";
+
+        }else if(aberto && minasVizinhaca() >0){
+            return Long.toString(minasVizinhaca());
+
+        }else if(aberto){
+                return " ";
+            }else {
+            return "?";
+        }
+
+     }
+
 }
