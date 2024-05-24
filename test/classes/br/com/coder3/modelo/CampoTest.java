@@ -184,4 +184,32 @@ class CampoTest {
         assertEquals("*",campo.toString());
    }
 
+   @Test
+    void toStringTestTabuleiroLinhas(){
+        Tabuleiro t2 = new Tabuleiro(6,6,6);
+        assertEquals(6,t2.getLinhas());
+   }
+
+   @Test
+    void toStringTestTabuleiroColunas(){
+        Tabuleiro t3 = new Tabuleiro(7,7,7);
+        assertEquals(7,t3.getColunas());
+   }
+
+   @Test
+    void toStringTestTabuleiroMinas(){
+        Tabuleiro t4 = new Tabuleiro(8,8,8);
+        assertEquals(8,t4.getMinas());
+   }
+
+   @Test
+    void BotaoDeAbrirTabuleiro(){
+        Tabuleiro t5 = new Tabuleiro(9,9,9);
+        t5.marcar(4,3);
+        t5.abrir(5,4);
+        assertFalse(t5.getObjetivo());
+
+
+   }
+
 }

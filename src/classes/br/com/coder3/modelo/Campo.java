@@ -80,6 +80,10 @@ public class Campo {
         void  minar(){
          minado = true;
        }
+
+       void setAberto(boolean aberto){
+        this.aberto =aberto;
+       }
      public boolean IsAberto(){
         return  aberto;
      }
