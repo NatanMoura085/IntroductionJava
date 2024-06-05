@@ -14,36 +14,45 @@ public class AtualizarRegistroDesafio {
     public static void main(String[] args)  throws SQLException {
         Consumer<Object> print = System.out::println;
         List<Pessoa> pessoas = new ArrayList<>();
+        List<String> listNomes = new ArrayList<>();
         Scanner entrada = new Scanner(System.in);
         Connection connection = FabricaConexao.getConexao();
-        String SQL = "UPDATE pessoas SET ? WHERE codigo = ? ";
-        String SQl1 = "SELECT * FROM pessoas WHERE nome ~* ?";
+        String SQl1 = "SELECT * FROM pessoas WHERE nome ILIKE ?";
+        String SQL = "UPDATE pessoas SET nome = ? WHERE codigo = ? ";
 
-        System.out.print("Informe nome");
+        System.out.print("informe o nome");
         String nome = entrada.nextLine();
-        System.out.print("Informe Codigo");
-        int codigo = entrada.nextInt();
-        PreparedStatement stm1 = connection.prepareStatement(SQl1);
-         stm1.setString(1,nome);
-         ResultSet resultSet1 = stm1.executeQuery();
+        System.out.print("informe o codigo");
+        String codigo = entrada.nextLine();
+        System.out.print("Informe novo nome");
+        String NovoNome = entrada.nextLine();
 
-         System.out.print(Arrays.toString(resultSet1.getString("nome").toCharArray()));
+        PreparedStatement stmt1 = connection.prepareStatement(SQl1);
+        stmt1.setString(1,"%" + nome + "%" );
+        ResultSet resultado =  stmt1.executeQuery();
+        String nom12 = null;
 
-        PreparedStatement stmt = connection.prepareStatement(SQL);
-         stmt.setString(1,nome);
-         stmt.setInt(2,codigo);
-         ResultSet resultdo = stmt.executeQuery();
+        while(resultado.next()){
+            nom12 = resultado.getString("nome");
+            String nom1 = resultado.getString("nome");
+            listNomes.add(nom1);
+        }
 
-          while (resultdo.next()){
-              String nome2 = resultdo.getString("nome");
-              int codigo2 = resultdo.getInt("codigo");
-              pessoas.add(new Pessoa(codigo2,nome2));
-          }
+        PreparedStatement stmt2 = connection.prepareStatement(SQL);
+        stmt2.setString(1,nom12 = NovoNome);
+        stmt2.setInt(2, Integer.parseInt(codigo));
+        ResultSet resultado2 = stmt2.executeQuery();
+        while(resultado2.next()){
+            int codigoNovo = Integer.parseInt(resultado2.getString("codigo"));
+            pessoas.add(new Pessoa(codigoNovo,nom12));
+        }
 
 
-          pessoas.stream().forEach(print);
+             listNomes.stream().forEach(print);
+             pessoas.stream().forEach(print);
         entrada.close();
-          stmt.close();
-          connection.close();
+        connection.close();
+        stmt1.close();
+        stmt2.close();
     }
 }
