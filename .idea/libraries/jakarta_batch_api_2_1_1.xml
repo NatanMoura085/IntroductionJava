@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="jakarta.batch-api-2.1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/jakarta.batch-api-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jakarta.enterprise.cdi-api-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jakarta.inject-api-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jakarta.transaction-api-2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
